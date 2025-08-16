@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythagorean Theorem Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .exam-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        
+        .question {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .triangle-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        svg {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .option {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .option label {
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .score {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .correct-answers {
+            margin-top: 20px;
+        }
+        
+        .correct-answer {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e8f5e8;
+            border-radius: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="exam-container">
+        <h1>Pythagorean Theorem Exam</h1>
+        
+        <form id="examForm">
+            <!-- Question 1 (Easy) -->
+            <div class="question">
+                <div class="question-title">Question 1: Find the length of the hypotenuse if the legs are 3 and 4.</div>
+                <div class="triangle-container">
+                    <svg width="200" height="150">
+                        <polygon points="30,120 130,120 130,40" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="80" y="135" text-anchor="middle">3</text>
+                        <text x="145" y="80" text-anchor="middle">4</text>
+                        <text x="75" y="75" text-anchor="middle">c</text>
+                    </svg>
+                </div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1a" name="q1" value="a">
+                        <label for="q1a">5</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1b" name="q1" value="b">
+                        <label for="q1b">7</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1c" name="q1" value="c">
+                        <label for="q1c">6</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1d" name="q1" value="d">
+                        <label for="q1d">8</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 (Intermediate) -->
+            <div class="question">
+                <div class="question-title">Question 2: A right triangle has legs of length 5 and 12. What is the length of the hypotenuse?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2a" name="q2" value="a">
+                        <label for="q2a">13</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2b" name="q2" value="b">
+                        <label for="q2b">17</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2c" name="q2" value="c">
+                        <label for="q2c">11</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2d" name="q2" value="d">
+                        <label for="q2d">15</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 (Intermediate) -->
+            <div class="question">
+                <div class="question-title">Question 3: Find the missing leg length.</div>
+                <div class="triangle-container">
+                    <svg width="220" height="160">
+                        <polygon points="40,130 140,130 140,50" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="90" y="145" text-anchor="middle">8</text>
+                        <text x="155" y="90" text-anchor="middle">b</text>
+                        <text x="85" y="85" text-anchor="middle">10</text>
+                    </svg>
+                </div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3a" name="q3" value="a">
+                        <label for="q3a">6</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3b" name="q3" value="b">
+                        <label for="q3b">4</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3c" name="q3" value="c">
+                        <label for="q3c">7</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3d" name="q3" value="d">
+                        <label for="q3d">9</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 (Intermediate) -->
+            <div class="question">
+                <div class="question-title">Question 4: A ladder 25 feet long leans against a wall. The bottom of the ladder is 15 feet from the wall. How high up the wall does the ladder reach?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4a" name="q4" value="a">
+                        <label for="q4a">20 feet</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4b" name="q4" value="b">
+                        <label for="q4b">18 feet</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4c" name="q4" value="c">
+                        <label for="q4c">22 feet</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4d" name="q4" value="d">
+                        <label for="q4d">16 feet</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 (Intermediate) -->
+            <div class="question">
+                <div class="question-title">Question 5: Find x in this right triangle.</div>
+                <div class="triangle-container">
+                    <svg width="240" height="180">
+                        <polygon points="50,150 170,150 170,60" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="110" y="165" text-anchor="middle">9</text>
+                        <text x="185" y="105" text-anchor="middle">12</text>
+                        <text x="105" y="100" text-anchor="middle">x</text>
+                    </svg>
+                </div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5a" name="q5" value="a">
+                        <label for="q5a">15</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5b" name="q5" value="b">
+                        <label for="q5b">21</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5c" name="q5" value="c">
+                        <label for="q5c">18</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5d" name="q5" value="d">
+                        <label for="q5d">14</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 (Intermediate) -->
+            <div class="question">
+                <div class="question-title">Question 6: A rectangle has a length of 16 units and width of 12 units. What is the length of its diagonal?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q6a" name="q6" value="a">
+                        <label for="q6a">20</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6b" name="q6" value="b">
+                        <label for="q6b">24</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6c" name="q6" value="c">
+                        <label for="q6c">18</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6d" name="q6" value="d">
+                        <label for="q6d">28</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 (Intermediate) -->
+            <div class="question">
+                <div class="question-title">Question 7: Find the value of y.</div>
+                <div class="triangle-container">
+                    <svg width="260" height="200">
+                        <polygon points="60,170 180,170 180,70" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="120" y="185" text-anchor="middle">20</text>
+                        <text x="195" y="120" text-anchor="middle">y</text>
+                        <text x="115" y="115" text-anchor="middle">25</text>
+                    </svg>
+                </div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q7a" name="q7" value="a">
+                        <label for="q7a">15</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7b" name="q7" value="b">
+                        <label for="q7b">18</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7c" name="q7" value="c">
+                        <label for="q7c">12</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7d" name="q7" value="d">
+                        <label for="q7d">21</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 (Hard) -->
+            <div class="question">
+                <div class="question-title">Question 8: Two cars leave the same point. One travels 40 km north, the other travels 42 km east. How far apart are the cars? (Round to nearest whole number)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q8a" name="q8" value="a">
+                        <label for="q8a">58 km</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q8b" name="q8" value="b">
+                        <label for="q8b">82 km</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q8c" name="q8" value="c">
+                        <label for="q8c">64 km</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q8d" name="q8" value="d">
+                        <label for="q8d">55 km</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 (Hard) -->
+            <div class="question">
+                <div class="question-title">Question 9: In a right triangle, one leg is 7 units and the hypotenuse is 25 units. Find the length of the other leg.</div>
+                <div class="triangle-container">
+                    <svg width="280" height="220">
+                        <polygon points="70,190 200,190 200,80" fill="none" stroke="black" stroke-width="2"/>
+                        <text x="135" y="205" text-anchor="middle">7</text>
+                        <text x="215" y="135" text-anchor="middle">a</text>
+                        <text x="130" y="130" text-anchor="middle">25</text>
+                    </svg>
+                </div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q9a" name="q9" value="a">
+                        <label for="q9a">24</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q9b" name="q9" value="b">
+                        <label for="q9b">18</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q9c" name="q9" value="c">
+                        <label for="q9c">32</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q9d" name="q9" value="d">
+                        <label for="q9d">26</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 (Hard) -->
+            <div class="question">
+                <div class="question-title">Question 10: A square has a diagonal of length 14√2 units. What is the length of each side of the square?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q10a" name="q10" value="a">
+                        <label for="q10a">14</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q10b" name="q10" value="b">
+                        <label for="q10b">7</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q10c" name="q10" value="c">
+                        <label for="q10c">28</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q10d" name="q10" value="d">
+                        <label for="q10d">21</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="gradeExam()">Submit Exam</button>
+        </form>
+
+        <div id="results" class="results hidden">
+            <div class="score" id="scoreDisplay"></div>
+            <div class="correct-answers">
+                <h3>Correct Answers:</h3>
+                <div id="answersDisplay"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'a',  // 5 (3-4-5 triangle)
+            q2: 'a',  // 13 (5-12-13 triangle)
+            q3: 'a',  // 6 (6-8-10 triangle)
+            q4: 'a',  // 20 feet (15-20-25 triangle)
+            q5: 'a',  // 15 (9-12-15 triangle)
+            q6: 'a',  // 20 (12-16-20 triangle)
+            q7: 'a',  // 15 (15-20-25 triangle)
+            q8: 'a',  // 58 km (√(40² + 42²) = √(1600 + 1764) = √3364 ≈ 58)
+            q9: 'a',  // 24 (7-24-25 triangle)
+            q10: 'a'  // 14 (diagonal = side√2, so 14√2 = side√2, side = 14)
+        };
+
+        const explanations = {
+            q1: "Using a² + b² = c²: 3² + 4² = 9 + 16 = 25, so c = √25 = 5",
+            q2: "Using a² + b² = c²: 5² + 12² = 25 + 144 = 169, so c = √169 = 13",
+            q3: "Using a² + b² = c²: 8² + b² = 10², so b² = 100 - 64 = 36, b = 6",
+            q4: "Using a² + b² = c²: 15² + h² = 25², so h² = 625 - 225 = 400, h = 20",
+            q5: "Using a² + b² = c²: 9² + 12² = 81 + 144 = 225, so x = √225 = 15",
+            q6: "Diagonal of rectangle: √(16² + 12²) = √(256 + 144) = √400 = 20",
+            q7: "Using a² + b² = c²: 20² + y² = 25², so y² = 625 - 400 = 225, y = 15",
+            q8: "Distance = √(40² + 42²) = √(1600 + 1764) = √3364 ≈ 58 km",
+            q9: "Using a² + b² = c²: 7² + a² = 25², so a² = 625 - 49 = 576, a = 24",
+            q10: "For a square, diagonal = side × √2. So 14√2 = side × √2, therefore side = 14"
+        };
+
+        function gradeExam() {
+            const form = document.getElementById('examForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let total = 10;
+            let answers = [];
+
+            for (let i = 1; i <= 10; i++) {
+                const questionKey = `q${i}`;
+                const userAnswer = formData.get(questionKey);
+                const correctAnswer = correctAnswers[questionKey];
+                
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+                
+                answers.push({
+                    question: i,
+                    userAnswer: userAnswer,
+                    correctAnswer: correctAnswer,
+                    isCorrect: userAnswer === correctAnswer,
+                    explanation: explanations[questionKey]
+                });
+            }
+
+            displayResults(score, total, answers);
+        }
+
+        function displayResults(score, total, answers) {
+            const percentage = Math.round((score / total) * 100);
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const answersDisplay = document.getElementById('answersDisplay');
+            const results = document.getElementById('results');
+
+            scoreDisplay.innerHTML = `Your Score: ${score}/${total} (${percentage}%)`;
+            
+            let answersHTML = '';
+            answers.forEach((answer, index) => {
+                const statusColor = answer.isCorrect ? '#4CAF50' : '#f44336';
+                const statusText = answer.isCorrect ? '✓' : '✗';
+                
+                answersHTML += `
+                    <div class="correct-answer" style="border-left-color: ${statusColor};">
+                        <strong>Question ${answer.question}: ${statusText}</strong><br>
+                        ${answer.explanation}
+                    </div>
+                `;
+            });
+            
+            answersDisplay.innerHTML = answersHTML;
+            results.classList.remove('hidden');
+            
+            // Scroll to results
+            results.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
