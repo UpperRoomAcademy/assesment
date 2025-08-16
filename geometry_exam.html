@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Foundations Exam</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            line-height: 1.6;
+        }
+        .exam-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .instructions {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafbfc;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .question-text {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e8f4fd;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 200px;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        .submit-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        .score {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .answer-key {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 12px;
+        }
+        .answer-key h2 {
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .answer-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(236, 240, 241, 0.1);
+            border-radius: 6px;
+        }
+        .correct-indicator {
+            display: none;
+            margin-left: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .correct {
+            background: #27ae60;
+            color: white;
+        }
+        .incorrect {
+            background: #e74c3c;
+            color: white;
+        }
+        .grade-indicator {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+        .grade-a { background: #27ae60; color: white; }
+        .grade-b { background: #f39c12; color: white; }
+        .grade-c { background: #e67e22; color: white; }
+        .grade-f { background: #e74c3c; color: white; }
+    </style>
+</head>
+<body>
+    <div class="exam-container">
+        <h1>📐 Geometry Foundations Exam</h1>
+        <h2 style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">Basic Geometry & Right Triangle Properties</h2>
+        
+        <div class="instructions">
+            <h3>📋 Instructions</h3>
+            <p><strong>Time Limit:</strong> No time limit - work at your own pace</p>
+            <p><strong>Questions:</strong> 15 conceptual questions (no calculations required)</p>
+            <p><strong>Question Types:</strong> Multiple Choice, True/False, Fill-in-the-Blank</p>
+            <p><strong>Note:</strong> Some multiple-choice questions may have more than one correct answer.</p>
+        </div>
+
+        <form id="examForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <h3>1. Multiple Choice</h3>
+                <div class="question-text">Which of the following best describes a point in geometry?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="A">
+                        A location that has length but no width
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="B">
+                        A location that has no dimensions (length, width, or height)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="C">
+                        A location that has width but no length
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="D">
+                        A small circle used in geometric drawings
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q1-indicator"></span>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <h3>2. True/False</h3>
+                <div class="question-text">A line segment has two endpoints, while a line extends infinitely in both directions.</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="True">
+                        True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="False">
+                        False
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q2-indicator"></span>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <h3>3. Fill in the Blank</h3>
+                <div class="question-text">An angle that measures exactly 90 degrees is called a <input type="text" name="q3" placeholder="type here"> angle.</div>
+                <span class="correct-indicator" id="q3-indicator"></span>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <h3>4. Multiple Choice (Select All)</h3>
+                <div class="question-text">Which of the following angles are considered acute angles? (Select all that apply)</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" name="q4" value="A">
+                        45 degrees
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q4" value="B">
+                        90 degrees
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q4" value="C">
+                        30 degrees
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q4" value="D">
+                        120 degrees
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q4-indicator"></span>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <h3>5. True/False</h3>
+                <div class="question-text">An obtuse angle measures more than 90 degrees but less than 180 degrees.</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="True">
+                        True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="False">
+                        False
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q5-indicator"></span>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <h3>6. Multiple Choice</h3>
+                <div class="question-text">What type of triangle has all three sides of equal length?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="A">
+                        Scalene triangle
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="B">
+                        Isosceles triangle
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="C">
+                        Equilateral triangle
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="D">
+                        Right triangle
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q6-indicator"></span>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <h3>7. Fill in the Blank</h3>
+                <div class="question-text">A triangle with exactly two sides of equal length is called an <input type="text" name="q7" placeholder="type here"> triangle.</div>
+                <span class="correct-indicator" id="q7-indicator"></span>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <h3>8. Multiple Choice</h3>
+                <div class="question-text">In a right triangle, what is the name of the longest side?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="A">
+                        Adjacent side
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="B">
+                        Opposite side
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="C">
+                        Hypotenuse
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="D">
+                        Base
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q8-indicator"></span>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <h3>9. True/False</h3>
+                <div class="question-text">In a right triangle, the hypotenuse is always opposite to the right angle.</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="True">
+                        True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="False">
+                        False
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q9-indicator"></span>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <h3>10. Fill in the Blank</h3>
+                <div class="question-text">The two shorter sides of a right triangle are called the <input type="text" name="q10" placeholder="type here"> of the triangle.</div>
+                <span class="correct-indicator" id="q10-indicator"></span>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question">
+                <h3>11. Multiple Choice (Select All)</h3>
+                <div class="question-text">Which of the following statements about planes are true? (Select all that apply)</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" name="q11" value="A">
+                        A plane extends infinitely in all directions
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q11" value="B">
+                        A plane has thickness
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q11" value="C">
+                        A plane is a flat surface
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q11" value="D">
+                        Three points always determine a unique plane
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q11-indicator"></span>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question">
+                <h3>12. True/False</h3>
+                <div class="question-text">A scalene triangle has no sides of equal length.</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q12" value="True">
+                        True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="False">
+                        False
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q12-indicator"></span>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question">
+                <h3>13. Multiple Choice</h3>
+                <div class="question-text">What is the measure of a right angle in degrees?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q13" value="A">
+                        45 degrees
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="B">
+                        90 degrees
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="C">
+                        180 degrees
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="D">
+                        360 degrees
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q13-indicator"></span>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question">
+                <h3>14. Fill in the Blank</h3>
+                <div class="question-text">A triangle that contains one angle measuring exactly 90 degrees is called a <input type="text" name="q14" placeholder="type here"> triangle.</div>
+                <span class="correct-indicator" id="q14-indicator"></span>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <h3>15. Multiple Choice</h3>
+                <div class="question-text">Which statement best describes the relationship between lines and line segments?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q15" value="A">
+                        Lines and line segments are exactly the same thing
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="B">
+                        A line segment is part of a line with two endpoints
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="C">
+                        A line is part of a line segment
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="D">
+                        Line segments are curved while lines are straight
+                    </label>
+                </div>
+                <span class="correct-indicator" id="q15-indicator"></span>
+            </div>
+        </form>
+
+        <div class="submit-container">
+            <button type="button" class="submit-btn" onclick="gradeExam()">Submit Exam</button>
+        </div>
+
+        <div class="results" id="results">
+            <div class="score" id="scoreDisplay"></div>
+            <div id="gradeMessage"></div>
+        </div>
+
+        <div class="answer-key" id="answerKey">
+            <h2>🔑 Answer Key</h2>
+            <div id="answerList"></div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: ['B'],
+            q2: ['True'],
+            q3: ['right'],
+            q4: ['A', 'C'],
+            q5: ['True'],
+            q6: ['C'],
+            q7: ['isosceles'],
+            q8: ['C'],
+            q9: ['True'],
+            q10: ['legs'],
+            q11: ['A', 'C'],
+            q12: ['True'],
+            q13: ['B'],
+            q14: ['right'],
+            q15: ['B']
+        };
+
+        const answerExplanations = {
+            q1: "A point has no dimensions (length, width, or height) - it represents a location in space",
+            q2: "True - A line segment has definite endpoints, while a line extends infinitely in both directions",
+            q3: "An angle measuring exactly 90 degrees is called a 'right' angle",
+            q4: "Acute angles are less than 90 degrees. Both 45° and 30° qualify as acute angles",
+            q5: "True - Obtuse angles measure between 90° and 180° (more than 90°, less than 180°)",
+            q6: "An equilateral triangle has all three sides of equal length",
+            q7: "An isosceles triangle has exactly two sides of equal length",
+            q8: "The hypotenuse is the longest side in a right triangle",
+            q9: "True - The hypotenuse is always positioned opposite to the right angle",
+            q10: "The two shorter sides of a right triangle are called the 'legs'",
+            q11: "A plane extends infinitely in all directions and is a flat surface (it has no thickness)",
+            q12: "True - A scalene triangle has all sides of different lengths (no equal sides)",
+            q13: "A right angle measures exactly 90 degrees",
+            q14: "A triangle with one 90-degree angle is called a 'right' triangle",
+            q15: "A line segment is part of a line that has two specific endpoints"
+        };
+
+        function gradeExam() {
+            const form = document.getElementById('examForm');
+            const formData = new FormData(form);
+            
+            let score = 0;
+            let totalQuestions = 15;
+            
+            // Check each question
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionKey = `q${i}`;
+                let userAnswers = [];
+                let isCorrect = false;
+                
+                if (i === 4 || i === 11) { // Multiple select questions
+                    userAnswers = formData.getAll(questionKey);
+                } else if (i === 3 || i === 7 || i === 10 || i === 14) { // Fill in the blank
+                    const answer = formData.get(questionKey);
+                    if (answer) {
+                        userAnswers = [answer.toLowerCase().trim()];
+                    }
+                } else { // Single select questions
+                    const answer = formData.get(questionKey);
+                    if (answer) {
+                        userAnswers = [answer];
+                    }
+                }
+                
+                // Check if answer is correct
+                const correctAnswersForQuestion = correctAnswers[questionKey].map(a => a.toLowerCase());
+                const userAnswersLower = userAnswers.map(a => a.toLowerCase());
+                
+                if (userAnswersLower.length === correctAnswersForQuestion.length) {
+                    isCorrect = userAnswersLower.every(answer => correctAnswersForQuestion.includes(answer));
+                }
+                
+                if (isCorrect) {
+                    score++;
+                }
+                
+                // Show indicator
+                const indicator = document.getElementById(`${questionKey}-indicator`);
+                indicator.style.display = 'inline-block';
+                indicator.textContent = isCorrect ? '✓ Correct' : '✗ Incorrect';
+                indicator.className = `correct-indicator ${isCorrect ? 'correct' : 'incorrect'}`;
+            }
+            
+            // Calculate percentage and grade
+            const percentage = (score / totalQuestions) * 100;
+            let grade, gradeClass;
+            
+            if (percentage >= 90) {
+                grade = 'A';
+                gradeClass = 'grade-a';
+            } else if (percentage >= 80) {
+                grade = 'B';
+                gradeClass = 'grade-b';
+            } else if (percentage >= 70) {
+                grade = 'C';
+                gradeClass = 'grade-c';
+            } else {
+                grade = 'F';
+                gradeClass = 'grade-f';
+            }
+            
+            // Display results
+            const results = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const gradeMessage = document.getElementById('gradeMessage');
+            
+            scoreDisplay.innerHTML = `Score: ${score}/${totalQuestions} (${percentage.toFixed(1)}%) <span class="grade-indicator ${gradeClass}">Grade: ${grade}</span>`;
+            gradeMessage.innerHTML = getGradeMessage(percentage);
+            
+            results.style.display = 'block';
+            
+            // Show answer key
+            displayAnswerKey();
+            
+            // Disable submit button
+            document.querySelector('.submit-btn').disabled = true;
+            document.querySelector('.submit-btn').textContent = 'Exam Submitted';
+            
+            // Scroll to results
+            results.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function getGradeMessage(percentage) {
+            if (percentage >= 95) return "🏆 Excellent work! You've mastered the fundamentals of geometry!";
+            if (percentage >= 90) return "🌟 Outstanding! You have a strong grasp of geometric concepts!";
+            if (percentage >= 85) return "👍 Great job! You understand most geometric principles well!";
+            if (percentage >= 80) return "✅ Good work! You have a solid foundation in geometry!";
+            if (percentage >= 75) return "📚 Not bad! Review the concepts you missed for improvement.";
+            if (percentage >= 70) return "⚠️ You passed, but consider reviewing the material more thoroughly.";
+            return "📖 You may want to review the geometry fundamentals before moving on.";
+        }
+        
+        function displayAnswerKey() {
+            const answerKey = document.getElementById('answerKey');
+            const answerList = document.getElementById('answerList');
+            
+            let answerHTML = '';
+            
+            for (let i = 1; i <= 15; i++) {
+                const questionKey = `q${i}`;
+                const correct = correctAnswers[questionKey];
+                const explanation = answerExplanations[questionKey];
+                
+                answerHTML += `
+                    <div class="answer-item">
+                        <strong>Question ${i}:</strong> ${correct.join(', ')}
+                        <br><em>${explanation}</em>
+                    </div>
+                `;
+            }
+            
+            answerList.innerHTML = answerHTML;
+            answerKey.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
